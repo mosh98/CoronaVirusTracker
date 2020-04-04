@@ -20,10 +20,11 @@ public class HomeController {
 
         List<LocationStats> allstats = cs.getAllStats();
        int totalReportedCases =  allstats.stream().mapToInt(stat-> stat.getLatestTotalCase() ).sum();
-
+        int totalNewCases =  allstats.stream().mapToInt(stat-> stat.getDiffFromPrevDay() ).sum();
 
         model.addAttribute("locationStats", allstats);
         model.addAttribute("totalReportedCases", totalReportedCases);
+        model.addAttribute("totalNewCases", totalNewCases);
 
 
 
